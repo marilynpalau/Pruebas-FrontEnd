@@ -9,6 +9,14 @@
   --color-gray: #9a9a9a;
 }
 
-h2 {
+* h2 {
   font-weight: normal;
+}
+
+* div.mat-tab-body-content.ng-trigger.ng-trigger-translateTab {
+  padding: 20px !important;
+}
+
+* .mat-tab-body.mat-tab-body-active {
+  overflow-y: hidden !important;
 }

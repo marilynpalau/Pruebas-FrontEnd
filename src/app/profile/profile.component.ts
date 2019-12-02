@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ProfileService } from './profile.service';
 import { IUser } from '../interfaces/user.interface';
 import { Store } from '@ngrx/store';
+import * as listActions from '../list/redux/list.actions';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
   user: IUser;
   id = null;
@@ -20,10 +22,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.store.select('list').subscribe(user => {
-      /* this.id = user; */
       this.user = user;
     });
-    /* this.getUser(); */
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(listActions.clearUser());
   }
 
   getUser() {

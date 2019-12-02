@@ -1,1 +1,82 @@
-<p>profile works!</p>
+<div class="info">
+    <img [src]="user._links.avatar.href">
+    <h2>
+        {{user.first_name}} {{user.last_name}}
+    </h2>
+    <button mat-raised-button color="accent">Cuenta</button>
+</div>
+
+<mat-tab-group selectedIndex="0">
+    <mat-tab label="Detalles">
+        <mat-grid-list cols="3" rowHeight="7:7">
+            <mat-grid-tile>
+                <mat-card>
+                    <mat-card-content class="display">
+                        <p class="name">{{user.first_name}} {{user.last_name}}</p>
+                        <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+                    </mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="div-card">
+                    <mat-card class="card">
+                        <mat-card-content class="display">
+                            <p>No public profile</p>
+                            <mat-icon aria-hidden="false" aria-label="Example home icon" class="space">edit</mat-icon>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card class="card notes">
+                        <mat-card-content class="display">
+                            <p>No private notes</p>
+                            <mat-icon aria-hidden="false" aria-label="Example home icon" class="space">edit</mat-icon>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card class="card">
+                        <mat-card-title>Permisos</mat-card-title>
+                        <mat-card-content>
+                            Administrador
+                            <div class="display">
+                                <p>¿Es este usuario un administrador?</p>
+                                <mat-slide-toggle class="space"></mat-slide-toggle>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="display">
+                    <div>
+                        <p><b>Proyectos</b></p>
+                        <span>Archivados <br> 0</span>
+                    </div>
+                    <div>
+                        <p><b>Tareas</b></p>
+                        <span>Terminado <br> 0</span>
+                    </div>
+                    <div>
+                        <p><b>Hitos</b></p>
+                        <span>Terminado <br> 0</span>
+                    </div>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+
+    <mat-tab label="Eventos"> Second </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <p><span matBadge="1" matBadgeOverlap="false">Proyectos</span></p>
+        </ng-template>
+        Third
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <p> <span matBadge="2" matBadgeOverlap="false">Tareas</span> </p>
+        </ng-template>
+        Fourth
+    </mat-tab>
+</mat-tab-group>

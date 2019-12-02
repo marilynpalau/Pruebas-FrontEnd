@@ -25,7 +25,7 @@ export class ListComponent implements OnInit, AfterViewInit {
     private listService: ListService,
     private store: Store<IUser>,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.listService.getUsers().subscribe(res => {
@@ -41,7 +41,7 @@ export class ListComponent implements OnInit, AfterViewInit {
   }
 
   goUserDetails(item) {
-    this.store.dispatch(listActions.readUser({user: item}));
+    this.store.dispatch(listActions.readUser({ user: item }));
     this.router.navigate(['/profile']);
   }
 
