@@ -1,4 +1,4 @@
-.mat-tab-body-content.ng-trigger.ng-trigger-translateTab {
+div.mat-tab-body-content.ng-trigger.ng-trigger-translateTab {
   padding: 20px !important;
 }
 
@@ -8,11 +8,30 @@ h2 {
 
 thead {
   background-color: #0f5b94 !important;
+
+  th.mat-header-cell {
+    color: var(--color-white1);
+  }
 }
 
-.mat-header-cell {
-  color: white;
+th.mat-header-cell,
+td.mat-cell {
+  padding: 15px !important;
+  .icon-user {
+    color: var(--color-green);
+  }
+
+  .icon-mail {
+    color: var(--color-gray);
+  }
 }
 
+.space {
+  white-space: nowrap;
+}
 
-// corregir cambiar colores por variablessssssssssss
+img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}

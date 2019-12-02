@@ -13,7 +13,7 @@ export interface IUser {
     address?: string;
     phone?: string;
     status?: string;
-    links?: {
+    _links?: {
         avatar?: {
             href?: string;
         };

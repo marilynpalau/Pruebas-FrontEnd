@@ -4,6 +4,7 @@ import { IUser } from '../interfaces/user.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { ListService } from './list.service';
 import { MatSort } from '@angular/material/sort';
+import * as listActions from './redux/list.actions';
 
 @Component({
   selector: 'app-list',
@@ -13,7 +14,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ListComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['first_name', 'last_name', 'website', 'dob', 'email', 'address', 'phone'];
+  displayedColumns: string[] = ['user', 'avatar', 'first_name', 'last_name', 'website', 'dob', 'email', 'address', 'phone'];
   dataSource = new MatTableDataSource<IUser>();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -31,6 +32,10 @@ export class ListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  goUserDetails(item) {
+    
   }
 
 }

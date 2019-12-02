@@ -11,6 +11,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
+import * as listReducer from './list/redux/list.reducer';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,13 @@ import { MatSortModule } from '@angular/material/sort';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    StoreModule.forRoot({ list: listReducer.reducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
