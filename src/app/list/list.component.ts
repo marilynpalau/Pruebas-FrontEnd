@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ListService } from './list.service';
 import { MatSort } from '@angular/material/sort';
 import * as listActions from './redux/list.actions';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -19,7 +21,11 @@ export class ListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private listService: ListService) { }
+  constructor(
+    private listService: ListService,
+    private store: Store<IUser>,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.listService.getUsers().subscribe(res => {
@@ -35,7 +41,8 @@ export class ListComponent implements OnInit, AfterViewInit {
   }
 
   goUserDetails(item) {
-    
+    this.store.dispatch(listActions.readUser({user: item}));
+    this.router.navigate(['/profile']);
   }
 
 }

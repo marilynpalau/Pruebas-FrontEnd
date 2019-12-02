@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IResult } from '../interfaces/user.interface';
+import { IUser } from '../interfaces/user.interface';
 import { url } from '../config';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class ListService {
+export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<IResult> {
+  getUser(id): Observable<IUser> {
     console.log('service run');
     const params = new HttpParams({ fromString: '_format=json&access-token=2sTTRZ41l-OXUyHqJQDmVQph7HYgT8A0Mw9X'});
-    return this.http.get<IResult>(url, { params });
+    return this.http.get<IUser>(url + '/' + id, { params });
   }
+
 }
